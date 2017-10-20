@@ -120,18 +120,22 @@ return [
 
     // Metric form fields
     'metrics' => [
-        'name'             => 'Name',
-        'suffix'           => 'Suffix',
-        'description'      => 'Description',
-        'description-help' => 'You may also use Markdown.',
-        'display-chart'    => 'Display chart on status page?',
-        'default-value'    => 'Default value',
-        'calc_type'        => 'Calculation of metrics',
-        'type_sum'         => 'Sum',
-        'type_avg'         => 'Average',
-        'places'           => 'Decimal places',
-        'default_view'     => 'Default view',
-        'threshold'        => 'How many minutes of threshold between metric points?',
+        'name'                     => 'Name',
+        'suffix'                   => 'Suffix',
+        'description'              => 'Description',
+        'description-help'         => 'You may also use Markdown.',
+        'display-chart'            => 'Display chart on status page?',
+        'default-value'            => 'Default value',
+        'calc_type'                => 'Calculation of metrics',
+        'type_sum'                 => 'Sum',
+        'type_avg'                 => 'Average',
+        'places'                   => 'Decimal places',
+        'default_view'             => 'Default view',
+        'threshold'                => 'How many minutes of threshold between metric points?',
+        'visibility'               => 'Visibility',
+        'visibility_authenticated' => 'Visible to authenticated users',
+        'visibility_public'        => 'Visible to everybody',
+        'visibility_hidden'        => 'Always hidden',
 
         'points' => [
             'value' => 'Value',
@@ -147,6 +151,7 @@ return [
             'display-graphs'               => 'Display graphs on status page?',
             'about-this-page'              => 'About this page',
             'days-of-incidents'            => 'How many days of incidents to show?',
+            'time_before_refresh'          => 'Status page refresh rate (in seconds).',
             'banner'                       => 'Banner Image',
             'banner-help'                  => "It's recommended that you upload files no bigger than 930px wide .",
             'subscribers'                  => 'Allow people to signup to email notifications?',
@@ -210,7 +215,7 @@ return [
         ],
         'team' => [
             'description' => 'Invite your team members by entering their email addresses here.',
-            'email'       => 'Email #:id',
+            'email'       => 'Your Team Members Email Address',
         ],
     ],
 

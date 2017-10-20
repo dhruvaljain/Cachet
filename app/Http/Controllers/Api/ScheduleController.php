@@ -32,7 +32,7 @@ class ScheduleController extends AbstractApiController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getSchedules()
+    public function index()
     {
         $schedule = Schedule::whereRaw('1 = 1');
 
@@ -54,7 +54,7 @@ class ScheduleController extends AbstractApiController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getSchedule(Schedule $schedule)
+    public function show(Schedule $schedule)
     {
         return $this->item($schedule);
     }
@@ -64,12 +64,12 @@ class ScheduleController extends AbstractApiController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postSchedule()
+    public function store()
     {
         try {
             $schedule = dispatch(new CreateScheduleCommand(
                 Binput::get('name'),
-                Binput::get('message'),
+                Binput::get('message', null, false, false),
                 Binput::get('status'),
                 Binput::get('scheduled_at'),
                 Binput::get('completed_at'),
@@ -89,7 +89,7 @@ class ScheduleController extends AbstractApiController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function putSchedule(Schedule $schedule)
+    public function update(Schedule $schedule)
     {
         try {
             $schedule = dispatch(new UpdateScheduleCommand(
@@ -115,7 +115,7 @@ class ScheduleController extends AbstractApiController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function deleteSchedule(Schedule $schedule)
+    public function destroy(Schedule $schedule)
     {
         try {
             dispatch(new DeleteScheduleCommand($schedule));

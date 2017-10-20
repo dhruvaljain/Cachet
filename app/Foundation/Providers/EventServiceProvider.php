@@ -21,13 +21,16 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
+        'CachetHQ\Cachet\Bus\Events\ActionInterface' => [
+            'CachetHQ\Cachet\Bus\Handlers\Events\ActionStorageHandler',
+        ],
         'CachetHQ\Cachet\Bus\Events\Beacon\BeaconFailedToSendEvent' => [
-            //
+            'CachetHQ\Cachet\Bus\Handlers\Events\Beacon\LogBeaconFailedHandler',
         ],
         'CachetHQ\Cachet\Bus\Events\Beacon\BeaconWasSentEvent' => [
             //
         ],
-        'CachetHQ\Cachet\Bus\Events\ComponentGroup\ComponentGroupWasAddedEvent' => [
+        'CachetHQ\Cachet\Bus\Events\ComponentGroup\ComponentGroupWasCreatedEvent' => [
             //
         ],
         'CachetHQ\Cachet\Bus\Events\ComponentGroup\ComponentGroupWasRemovedEvent' => [
@@ -36,10 +39,10 @@ class EventServiceProvider extends ServiceProvider
         'CachetHQ\Cachet\Bus\Events\ComponentGroup\ComponentGroupWasUpdatedEvent' => [
             //
         ],
-        'CachetHQ\Cachet\Bus\Events\Component\ComponentStatusWasUpdatedEvent' => [
+        'CachetHQ\Cachet\Bus\Events\Component\ComponentStatusWasChangedEvent' => [
             'CachetHQ\Cachet\Bus\Handlers\Events\Component\SendComponentUpdateEmailNotificationHandler',
         ],
-        'CachetHQ\Cachet\Bus\Events\Component\ComponentWasAddedEvent' => [
+        'CachetHQ\Cachet\Bus\Events\Component\ComponentWasCreatedEvent' => [
             //
         ],
         'CachetHQ\Cachet\Bus\Events\Component\ComponentWasRemovedEvent' => [
@@ -52,27 +55,24 @@ class EventServiceProvider extends ServiceProvider
             //
         ],
         'CachetHQ\Cachet\Bus\Events\IncidentUpdate\IncidentUpdateWasReportedEvent' => [
-            //
+            'CachetHQ\Cachet\Bus\Handlers\Events\IncidentUpdate\SendIncidentUpdateEmailNotificationHandler',
         ],
         'CachetHQ\Cachet\Bus\Events\IncidentUpdate\IncidentUpdateWasUpdatedEvent' => [
             //
         ],
-        'CachetHQ\Cachet\Bus\Events\Incident\IncidentWasRemovedEvent' => [
-            //
-        ],
-        'CachetHQ\Cachet\Bus\Events\Incident\IncidentWasReportedEvent' => [
+        'CachetHQ\Cachet\Bus\Events\Incident\IncidentWasCreatedEvent' => [
             'CachetHQ\Cachet\Bus\Handlers\Events\Incident\SendIncidentEmailNotificationHandler',
         ],
-        'CachetHQ\Cachet\Bus\Events\Incident\IncidentWasUpdatedEvent' => [
+        'CachetHQ\Cachet\Bus\Events\Incident\IncidentWasRemovedEvent' => [
             //
         ],
-        'CachetHQ\Cachet\Bus\Events\Incident\IncidentWasRemovedEvent' => [
+        'CachetHQ\Cachet\Bus\Events\Incident\IncidentWasUpdatedEvent' => [
             //
         ],
         'CachetHQ\Cachet\Bus\Events\Invite\InviteWasClaimedEvent' => [
             //
         ],
-        'CachetHQ\Cachet\Bus\Events\Metric\MetricPointWasAddedEvent' => [
+        'CachetHQ\Cachet\Bus\Events\Metric\MetricPointWasCreatedEvent' => [
             //
         ],
         'CachetHQ\Cachet\Bus\Events\Metric\MetricPointWasRemovedEvent' => [
@@ -81,7 +81,7 @@ class EventServiceProvider extends ServiceProvider
         'CachetHQ\Cachet\Bus\Events\Metric\MetricPointWasUpdatedEvent' => [
             //
         ],
-        'CachetHQ\Cachet\Bus\Events\Metric\MetricWasAddedEvent' => [
+        'CachetHQ\Cachet\Bus\Events\Metric\MetricWasCreatedEvent' => [
             //
         ],
         'CachetHQ\Cachet\Bus\Events\Metric\MetricWasRemovedEvent' => [
@@ -91,7 +91,7 @@ class EventServiceProvider extends ServiceProvider
             //
         ],
         'CachetHQ\Cachet\Bus\Events\Schedule\ScheduleWasCreatedEvent' => [
-            // 'CachetHQ\Cachet\Bus\Handlers\Events\Schedule\SendScheduleEmailNotificationHandler',
+            'CachetHQ\Cachet\Bus\Handlers\Events\Schedule\SendScheduleEmailNotificationHandler',
         ],
         'CachetHQ\Cachet\Bus\Events\Schedule\ScheduleWasRemovedEvent' => [
             //
@@ -100,7 +100,7 @@ class EventServiceProvider extends ServiceProvider
             //
         ],
         'CachetHQ\Cachet\Bus\Events\Subscriber\SubscriberHasSubscribedEvent' => [
-            'CachetHQ\Cachet\Bus\Handlers\Events\Subscriber\SendSubscriberVerificationEmailHandler',
+            //
         ],
         'CachetHQ\Cachet\Bus\Events\Subscriber\SubscriberHasUnsubscribedEvent' => [
             //
@@ -121,6 +121,9 @@ class EventServiceProvider extends ServiceProvider
             //
         ],
         'CachetHQ\Cachet\Bus\Events\System\SystemWasUpdatedEvent' => [
+            //
+        ],
+        'CachetHQ\Cachet\Bus\Events\User\UserAcceptedInviteEvent' => [
             //
         ],
         'CachetHQ\Cachet\Bus\Events\User\UserDisabledTwoAuthEvent' => [
@@ -144,11 +147,11 @@ class EventServiceProvider extends ServiceProvider
         'CachetHQ\Cachet\Bus\Events\User\UserRegeneratedApiTokenEvent' => [
             //
         ],
-        'CachetHQ\Cachet\Bus\Events\User\UserWasAddedEvent' => [
+        'CachetHQ\Cachet\Bus\Events\User\UserWasCreatedEvent' => [
             //
         ],
         'CachetHQ\Cachet\Bus\Events\User\UserWasInvitedEvent' => [
-            'CachetHQ\Cachet\Bus\Handlers\Events\User\SendInviteUserEmailHandler',
+            //
         ],
         'CachetHQ\Cachet\Bus\Events\User\UserWasRemovedEvent' => [
             //

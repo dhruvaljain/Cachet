@@ -19,7 +19,7 @@ use CachetHQ\Cachet\Models\Subscriber;
 use Illuminate\Contracts\View\View;
 
 /**
- * This is the dashboard composer.
+ * This is the dashboard composer class.
  *
  * @author James Brooks <james@alt-three.com>
  * @author Graham Campbell <graham@alt-three.com>
@@ -40,5 +40,6 @@ class DashboardComposer
         $view->withIncidentTemplateCount(IncidentTemplate::count());
         $view->withScheduleCount(Schedule::count());
         $view->withSubscriberCount(Subscriber::isVerified()->count());
+        $view->withIsWriteable(is_writable(app()->bootstrapPath().'/cachet'));
     }
 }
